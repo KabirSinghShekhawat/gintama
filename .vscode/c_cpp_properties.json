@@ -1,0 +1,41 @@
+{
+  "configurations": [
+    {
+      "name": "Mac (Apple Silicon)",
+      "includePath": [
+        "${workspaceFolder}/include/**",
+        "${workspaceFolder}/src/**",
+        "/opt/homebrew/include/**"
+      ],
+      "defines": [],
+      "macFrameworkPath": [
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+      ],
+      "compilerPath": "/usr/bin/clang",
+      "cStandard": "c17",
+      "intelliSenseMode": "macos-clang-arm64",
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "/opt/homebrew/include"
+        ]
+      }
+    },
+    {
+      "name": "Mac (Intel)",
+      "includePath": [
+        "${workspaceFolder}/include/**",
+        "${workspaceFolder}/src/**",
+        "/usr/local/include/**"
+      ],
+      "defines": [],
+      "macFrameworkPath": [
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+      ],
+      "compilerPath": "/usr/bin/clang",
+      "cStandard": "c17",
+      "intelliSenseMode": "macos-clang-x64"
+    }
+  ],
+  "version": 4
+}

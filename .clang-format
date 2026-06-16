@@ -1,0 +1,101 @@
+# .clang-format — LLVM 22, C17
+# BasedOnStyle: LLVM with opinionated overrides
+BasedOnStyle: LLVM
+Language:     Cpp          # covers C too; set Language: C if you want strict C-only
+
+# ── Indentation ──────────────────────────────────────────────────────────────
+IndentWidth:               4
+TabWidth:                  4
+UseTab:                    Never
+ContinuationIndentWidth:   4
+IndentCaseLabels:          true
+IndentCaseBlocks:          false
+IndentGotoLabels:          false      # keep goto labels flush-left
+
+# ── Column limit ─────────────────────────────────────────────────────────────
+ColumnLimit: 100
+
+# ── Braces (Linux = K&R for functions, Attach elsewhere) ─────────────────────
+BreakBeforeBraces:              Linux
+BraceWrapping:
+  AfterFunction:                true
+  AfterControlStatement:        false
+  AfterStruct:                  false
+  AfterEnum:                    false
+  AfterUnion:                   false
+  BeforeElse:                   false
+  IndentBraces:                 false
+  SplitEmptyFunction:           false
+  SplitEmptyRecord:             false
+
+# ── Pointer / reference alignment ────────────────────────────────────────────
+PointerAlignment:   Right          # int *p, not int* p or int * p
+ReferenceAlignment: Pointer        # follows PointerAlignment
+
+# ── Spacing ───────────────────────────────────────────────────────────────────
+SpaceAfterCStyleCast:                  false
+SpaceBeforeParens:                     ControlStatements
+SpacesInParens:                        Never
+SpacesInSquareBrackets:                false
+SpaceBeforeSquareBrackets:             false
+SpaceAroundPointerQualifiers:          Default
+SpacesInLineCommentPrefix:
+  Minimum:  1
+  Maximum:  1
+
+# ── Short constructs ──────────────────────────────────────────────────────────
+AllowShortBlocksOnASingleLine:         Empty
+AllowShortCaseLabelsOnASingleLine:     false
+AllowShortFunctionsOnASingleLine:      None
+AllowShortIfStatementsOnASingleLine:   Never
+AllowShortLoopsOnASingleLine:          false
+
+# ── Line breaking ─────────────────────────────────────────────────────────────
+AlwaysBreakAfterReturnType:            None
+BreakBeforeBinaryOperators:            None
+BreakBeforeTernaryOperators:           true
+BreakStringLiterals:                   true
+BreakArrays:                           false     # LLVM 17+ option
+
+# ── Alignment ─────────────────────────────────────────────────────────────────
+AlignConsecutiveAssignments:
+  Enabled:          true
+  AcrossEmptyLines: false
+  AcrossComments:   false
+AlignConsecutiveMacros:
+  Enabled:          true
+  AcrossEmptyLines: false
+  AcrossComments:   false
+AlignConsecutiveDeclarations:
+  Enabled:          false    # can get noisy in C with many locals
+AlignTrailingComments:
+  Kind:             Always
+  OverEmptyLines:   1
+AlignEscapedNewlines: Left
+
+# ── Includes ──────────────────────────────────────────────────────────────────
+SortIncludes:     CaseSensitive
+IncludeBlocks:    Regroup
+IncludeCategories:
+  # 1. Matching header (foo.c → foo.h)
+  - Regex:           '^".*"'
+    Priority:        1
+    SortPriority:    1
+  # 2. System / angle-bracket headers
+  - Regex:           '^<.*>'
+    Priority:        2
+    SortPriority:    2
+
+# ── Macros ────────────────────────────────────────────────────────────────────
+AttributeMacros:         []
+ForEachMacros:           []
+IfMacros:                []
+StatementAttributeLikeMacros: []
+StatementMacros:         []
+
+# ── Penalties (tune aggressive line-breaking) ─────────────────────────────────
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment:                  300
+PenaltyBreakString:                   1000
+PenaltyExcessCharacter:               100
+PenaltyReturnTypeOnItsOwnLine:        60

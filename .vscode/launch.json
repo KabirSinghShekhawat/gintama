@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug (LLDB)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/app",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "build",
+      "env": {
+        "ASAN_OPTIONS": "detect_leaks=1:abort_on_error=1:print_stats=1",
+        "UBSAN_OPTIONS": "print_stacktrace=1"
+      },
+      "stopOnEntry": false,
+      "initCommands": [
+        "settings set target.arm64-disassembly-flavor default"
+      ]
+    },
+    {
+      "name": "Debug with args",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/app",
+      "args": [
+        "${input:programArgs}"
+      ],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "build",
+      "env": {
+        "ASAN_OPTIONS": "detect_leaks=1:abort_on_error=1",
+        "UBSAN_OPTIONS": "print_stacktrace=1"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "programArgs",
+      "type": "promptString",
+      "description": "Program arguments (space-separated)"
+    }
+  ]
+}

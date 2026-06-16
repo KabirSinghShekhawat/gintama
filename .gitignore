@@ -1,0 +1,12 @@
+# Build artifacts
+obj/
+bin/
+
+# macOS
+.DS_Store
+*.dSYM/
+
+# Editor
+.vscode/settings.json
+*.swp
+*~
